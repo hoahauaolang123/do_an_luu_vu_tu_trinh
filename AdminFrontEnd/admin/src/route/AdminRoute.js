@@ -14,86 +14,87 @@ import StatisticsProduct from '../pages/Manage/statistical/StatisticsProduct';
 import StatisticsGeneral from "../pages/Manage/statistical/StatisticsGeneral";
 import OrderCanceled from "../pages/Manage/orderManage/OrderCanceled";
 import MainScreen from "../pages/Manage/orderManage/MainScreen";
+import CategoryManageV2 from "../pages/Manage/categoryManage/CategoryManageV2";
 
 //
 
 const AdminRoute = [
-    //for admin
-    {
-       path: "/admin",
-       exact: true,
-       myComponent: (location, props) => 
-       <MainScreen location={location} {...props} />,
-    },
-    {
+   //for admin
+   {
+      path: "/admin",
+      exact: true,
+      myComponent: (location, props) =>
+         <MainScreen location={location} {...props} />,
+   },
+   {
       path: "/admin/order-manage/order-success",
       exact: true,
-      myComponent: (location, props) => 
-      <OrderedManage location={location} {...props} />,
+      myComponent: (location, props) =>
+         <OrderedManage location={location} {...props} />,
    },
-    {
-       path: "/admin/category-manage",
-       exact: true,
-       myComponent: (location, props) => 
-      <CategoryManage location={location} {...props} />,
-    },
-    {
-       path: "/admin/order-manage/order-delivering",
-       exact: true,
-       myComponent: (location, props) => (
-          <OrderDelivering location={location} {...props} />
-       )
-      },
-      {
-         path: "/admin/order-manage/order-canceled",
-         exact: true,
-         myComponent: (location, props) => (
-            <OrderCanceled location={location} {...props} />
-         ),
-      },
-    {
-        path: "/admin/order-manage/order-not-confirm",
-       exact: true,
-       myComponent: (location, props) => (
-          <OrderNotConfirm location={location} {...props} />
-       ),
-    },
-    {
-       path: "/admin/product-manage",
-       exact: true,
-       myComponent: (location, props) => (
-          <ProductManage location={location} {...props} />
-       ),
-    },
-    {
-       path: "/admin/provider-manage",
-       exact: true,
-       myComponent: (location, props) => (
-          <ProviderManage location={location} {...props} />
-       ),
-    },
-    {
-       path: "/admin/user-manage",
-       exact: true,
-       myComponent: (location, props) => (
-          <UserManage location={location} {...props} />
-       ),
-    },
-    {
+   {
+      path: "/admin/category-manage",
+      exact: true,
+      myComponent: (location, props) =>
+         <CategoryManageV2 location={location} {...props} />,
+   },
+   {
+      path: "/admin/order-manage/order-delivering",
+      exact: true,
+      myComponent: (location, props) => (
+         <OrderDelivering location={location} {...props} />
+      )
+   },
+   {
+      path: "/admin/order-manage/order-canceled",
+      exact: true,
+      myComponent: (location, props) => (
+         <OrderCanceled location={location} {...props} />
+      ),
+   },
+   {
+      path: "/admin/order-manage/order-not-confirm",
+      exact: true,
+      myComponent: (location, props) => (
+         <OrderNotConfirm location={location} {...props} />
+      ),
+   },
+   {
+      path: "/admin/product-manage",
+      exact: true,
+      myComponent: (location, props) => (
+         <ProductManage location={location} {...props} />
+      ),
+   },
+   {
+      path: "/admin/provider-manage",
+      exact: true,
+      myComponent: (location, props) => (
+         <ProviderManage location={location} {...props} />
+      ),
+   },
+   {
+      path: "/admin/user-manage",
+      exact: true,
+      myComponent: (location, props) => (
+         <UserManage location={location} {...props} />
+      ),
+   },
+   {
       path: "/admin/evaluation-manage",
-       exact: true,
-       myComponent: (location, props) => (
-          <EvaluationManage location={location} {...props} />
-       ),
-    },
-    {
-        path: "/admin/statistics-revenue",
-        exact: true,
-        myComponent: (location, props) => (
-           <StatisticsRevenue location={location} {...props} />
-        ),
-     },
-     {
+      exact: true,
+      myComponent: (location, props) => (
+         <EvaluationManage location={location} {...props} />
+      ),
+   },
+   {
+      path: "/admin/statistics-revenue",
+      exact: true,
+      myComponent: (location, props) => (
+         <StatisticsRevenue location={location} {...props} />
+      ),
+   },
+   {
       path: "/admin/statistics-product",
       exact: true,
       myComponent: (location, props) => (
@@ -107,7 +108,7 @@ const AdminRoute = [
          <StatisticsGeneral location={location} {...props} />
       ),
    },
-   
-    
- ];
- export default AdminRoute;
+
+
+];
+export default AdminRoute;

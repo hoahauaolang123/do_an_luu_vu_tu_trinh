@@ -21,6 +21,7 @@ export default class CategoryManage extends Component {
             isLoading: true
         }
     }
+   
     handleClickBtn(record = null) {
         this.setState({
             visible: true,
@@ -33,6 +34,7 @@ export default class CategoryManage extends Component {
         })
     }
     handleCancel(value) {
+        
         this.setState({
             visible: value
         })
@@ -40,8 +42,6 @@ export default class CategoryManage extends Component {
     componentDidMount() {
         axiosInstance("ManageCategory", "GET")
             .then(res => {
-                
-                
                 this.setState({
                     data: [...res.data],
                     isLoading: false
@@ -240,6 +240,7 @@ export default class CategoryManage extends Component {
                                     visible?<ModalCategory onChangeInput={this.handleChangeInput.bind(this)} 
                                     visible={visible} data={item}
                                     onSubmitForm={this.handleSubmit.bind(this)}
+                                    onCancel = {this.handleCancel} 
                                     ></ModalCategory>:null
                                 }
                         
