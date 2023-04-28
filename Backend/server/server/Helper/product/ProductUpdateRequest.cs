@@ -21,8 +21,8 @@ namespace server.Helper.product
         public string description { get; set; }
 
         public ActionStatus status { get; set; }
-        public Size? size { get; set; }
-        public Color? color { get; set; }
+        //public Size? size { get; set; }
+        //public Color? color { get; set; }
         public int amount { get; set; }
         public int viewCount { get; set; }
         public IEnumerable<int> images { get; set; }

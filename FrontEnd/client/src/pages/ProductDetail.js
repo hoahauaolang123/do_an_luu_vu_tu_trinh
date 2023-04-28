@@ -4,18 +4,18 @@ import Detail from '../components/productDetail/Detail';
 import Evalution from '../components/evalution/Evaluation'
 import ListEvaluation from '../components/listEvaluation/ListEvaluation';
 
-class ProductDetail extends Component{
-    
-    componentDidMount(){
+class ProductDetail extends Component {
+
+    componentDidMount() {
         window.scrollTo(0, 0)
     }
-    render(){
+    render() {
         return (
-            <div style={{background: '#f7f7f7'}}>
-                <div style={{width: '75%', margin: '0 auto'}}>
+            <div style={{ background: '#f7f7f7' }}>
+                <div style={{ width: '75%', margin: '0 auto', marginTop: '100px' }}>
                     <BreadScrumb title="Chi tiết sản phẩm"></BreadScrumb>
                     <Detail productId={this.props.match.params.productId}></Detail>
-                    
+
                     <Evalution productId={this.props.match.params.productId}></Evalution>
                     <ListEvaluation productId={this.props.match.params.productId}></ListEvaluation>
                     <br></br>

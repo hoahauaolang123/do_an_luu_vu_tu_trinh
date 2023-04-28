@@ -256,7 +256,7 @@ class Maximized extends Component {
               <CloseIcon />
             </IconButton>,
           ]}
-          title="WELCOME TO ONLINE SHOP"
+          title="WELCOME TO VStyle"
         ></TitleBar>
         <div
           style={{

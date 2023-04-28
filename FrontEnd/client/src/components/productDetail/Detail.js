@@ -28,12 +28,12 @@ class Detail extends Component {
             .then(res => this.setState({
                 product: { ...res?.data },
                 isMounted: true,
-                mainImage: res?.data?.images ? res?.data?.images?.[0]?.urlImage :  empty ,
+                mainImage: res?.data?.images ? res?.data?.images?.[0]?.urlImage : empty,
             }))
 
     }
     handleClickSubImage(e) {
-       
+
         this.setState({
             mainImage: e.target.src
         })
@@ -74,7 +74,7 @@ class Detail extends Component {
             return emptyImage;
         }
         //
-        
+
         if (isMounted) {
             return <><article className="detail-product">
                 <div className="img-detail-product">
@@ -142,13 +142,6 @@ class Detail extends Component {
                                 {parsePriceForSale.parsePrice(product.price) || 0}<b> đ</b></span>
                         </div>
                         <div className="title-detail-item">
-                            <span className="title-detail"><b>Size:</b></span><Tag color="default"><b>{sizes[product.size]}</b></Tag>
-                        </div>
-                        <div className="title-detail-item">
-                            <span className="title-detail"><b>Màu sắc:</b></span><Tag color={colors[product.color]}><b>
-                                {TranslateColor(product.color)}</b></Tag>
-                        </div>
-                        <div className="title-detail-item">
                             <span className="title-detail"><b>Số lượng:</b></span>
                             <div style={{ border: '2px solid gray', display: 'flex', fontWeight: 'bold' }}>
                                 <div className="mount-item" onClick={() => this.handleDecreasingBtn()}
@@ -165,30 +158,30 @@ class Detail extends Component {
                         <div className="add-cart-detail-page">
                             <button className="add-cart-btn-detail-page" onClick={() => this.handleAddCartBtn(product)}>
                                 Thêm giỏ hàng
-                        </button>
+                            </button>
                         </div>
                     </div>
                 </div>
             </article>
-                    <Descriptions title="Thông tin sản phẩm" layout="vertical" bordered>
-                        <Descriptions.Item className="bold-text" label="Sản phẩm">{product.name}</Descriptions.Item>
-                        <Descriptions.Item className="bold-text" label="Nhà sản xuất">{product.provider.name}</Descriptions.Item>
-                        <Descriptions.Item className="bold-text" label="Danh mục">{product.category.generalityName}</Descriptions.Item>
-                        
-                        <Descriptions.Item className="bold-text" label="Mô tả" span={2}>
-                        <ul style={{marginLeft: '10px'}}>
+                <Descriptions title="Thông tin sản phẩm" layout="vertical" bordered>
+                    <Descriptions.Item className="bold-text" label="Sản phẩm">{product.name}</Descriptions.Item>
+                    <Descriptions.Item className="bold-text" label="Nhà sản xuất">{product.provider.name}</Descriptions.Item>
+                    <Descriptions.Item className="bold-text" label="Danh mục">{product.category.generalityName}</Descriptions.Item>
+
+                    <Descriptions.Item className="bold-text" label="Mô tả" span={2}>
+                        <ul style={{ marginLeft: '10px' }}>
                             {
                                 product.description.split(';').map((ele, id) => {
                                     return <li key={id}>{ele}</li>
                                 })
                             }
                         </ul>
-                        </Descriptions.Item>
-                        <Descriptions.Item className="bold-text" label="Trạng thái"><Badge status="processing" text="Còn hàng" /></Descriptions.Item>
-                    </Descriptions>
-                    <br></br>
+                    </Descriptions.Item>
+                    <Descriptions.Item className="bold-text" label="Trạng thái"><Badge status="processing" text="Còn hàng" /></Descriptions.Item>
+                </Descriptions>
+                <br></br>
             </>
-            
+
         }
         else {
             return (<Skeleton>

@@ -66,7 +66,7 @@ class SubNavbar extends Component {
       return (
         <div
           style={{
-            paddingTop: 5,
+            paddingTop: 15,
             maxWidth: "75%",
             margin: "0 auto",
             display: "flex",

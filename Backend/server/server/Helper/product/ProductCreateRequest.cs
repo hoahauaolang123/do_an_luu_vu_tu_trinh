@@ -22,8 +22,8 @@ namespace server.Helper
         public string description { get; set; }
 
         public ActionStatus status { get; set; }
-        public Size? size { get; set; }
-        public Color? color { get; set; }
+        //public Size? size { get; set; }
+        //public Color? color { get; set; }
         public int amount { get; set; }
         //
         

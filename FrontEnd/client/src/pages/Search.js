@@ -106,7 +106,7 @@ class Search extends Component {
   }
   //
   handleChangePage(page, pageSize) {
-   
+
     const { searchKey, fromPrice, toPrice, rating, categoryId } = this.props;
     this.props.searchProduct(
       queryString.stringify({
@@ -128,19 +128,19 @@ class Search extends Component {
     const listProduct =
       products.length > 0
         ? products.map((ele) => {
-            return (
-              <Product
-                addToCart={this.handleAddToCart.bind(this)}
-                key={ele.id}
-                product={{ ...ele }}
-              ></Product>
-            );
-          })
+          return (
+            <Product
+              addToCart={this.handleAddToCart.bind(this)}
+              key={ele.id}
+              product={{ ...ele }}
+            ></Product>
+          );
+        })
         : null;
 
     return (
       <div style={{ background: "#f7f7f7", minHeight: 480 }}>
-        <div style={{ width: "75%", margin: "0 auto" }}>
+        <div style={{ width: "75%", margin: "0 auto", marginTop: '100px' }}>
           <BreadScrumb
             title={new URLSearchParams(this?.props?.location?.search)?.get(
               "searchKey"
@@ -160,26 +160,26 @@ class Search extends Component {
                   {categories.length === 0
                     ? ""
                     : categories.map((e) => {
-                        debugger;
-                        return (
-                          <li
-                            key={e.id}
-                            style={{
-                              color: "gray",
-                              cursor: "pointer",
-                              fontWeight: new URLSearchParams(
-                                this.props?.location?.search
-                              )
-                                ?.get("searchKey")
-                                ?.includes(e.name)
-                                ? "bold"
-                                : "",
-                            }}
-                          >
-                            {e.name}
-                          </li>
-                        );
-                      })}
+                      debugger;
+                      return (
+                        <li
+                          key={e.id}
+                          style={{
+                            color: "gray",
+                            cursor: "pointer",
+                            fontWeight: new URLSearchParams(
+                              this.props?.location?.search
+                            )
+                              ?.get("searchKey")
+                              ?.includes(e.name)
+                              ? "bold"
+                              : "",
+                          }}
+                        >
+                          {e.name}
+                        </li>
+                      );
+                    })}
                 </ul>
                 <h5>ĐÁNH GIÁ</h5>
                 <span onClick={(value) => this.handleClickRate(5)}>

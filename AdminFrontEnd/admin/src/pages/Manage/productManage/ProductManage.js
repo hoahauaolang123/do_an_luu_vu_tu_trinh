@@ -41,19 +41,19 @@ export default class ProductManage extends Component {
       .then(res => {
         return res.data;
       }
-    );
+      );
     let categories = await axiosInstance(`ManageCategory`, "GET")
       .then(res => {
-        
+
         return res.data;
       }
-    );
+      );
     let products = await axiosInstance(`ManageProduct`, "GET")
       .then(res => {
         return res.data;
       }
-    );
-    
+      );
+
     return this.setState({
       data: products,
       categories: categories,
@@ -63,7 +63,7 @@ export default class ProductManage extends Component {
     )
   }
   async componentDidMount() {
-    
+
     await this.callApi();
   }
 
@@ -186,23 +186,23 @@ export default class ProductManage extends Component {
         this.setState({ isLoading: false });
       })
   }
-  handleChangeSelectCategory(e){
+  handleChangeSelectCategory(e) {
     this.setState({
       categoryId: e
     })
   }
-  handleChangeSelectProvider(e){
+  handleChangeSelectProvider(e) {
     this.setState({
       providerId: e
     })
   }
-  async handleSearchInput(value){
-    const {providerId, categoryId} = this.state;
+  async handleSearchInput(value) {
+    const { providerId, categoryId } = this.state;
     this.setState({
       isLoading: true,
     })
-    let data = await axiosInstance('ManageProduct/search', 'POST', {providerId: providerId, categoryId: categoryId, searchKey: value})
-    .then(res => res.data).catch(err => console.log(err));
+    let data = await axiosInstance('ManageProduct/search', 'POST', { providerId: providerId, categoryId: categoryId, searchKey: value })
+      .then(res => res.data).catch(err => console.log(err));
     this.setState({
       data: [...data],
       isLoading: false,
@@ -211,33 +211,33 @@ export default class ProductManage extends Component {
     })
   }
   //
-  handleChangePrice(e, id){
+  handleChangePrice(e, id) {
     const temp = [...this.state.data];
-        temp.map((ele) => {
-            if(ele.id === id){
-                ele[e.target.name] = e.target.value;
-            }
-            return ele;
-        })
-        this.setState({
-            data: temp, 
-        })
+    temp.map((ele) => {
+      if (ele.id === id) {
+        ele[e.target.name] = e.target.value;
+      }
+      return ele;
+    })
+    this.setState({
+      data: temp,
+    })
   }
   //
-  handleSaveItem(record){
+  handleSaveItem(record) {
     const body = {
       id: record.id,
       newPrice: +record.price,
     }
     axiosInstance('ManageProduct/UpdatePrice', 'PUT', body)
-    .then(res => {
-      if(res){
-        message.success('Update Price Success!', 4);
-      }
-      else{
-        message.warning('Update Price Failed!', 4);
-      }
-    })
+      .then(res => {
+        if (res) {
+          message.success('Update Price Success!', 4);
+        }
+        else {
+          message.warning('Update Price Failed!', 4);
+        }
+      })
   }
   render() {
     const { data, visible, item, isLoading, providers, categories } = this.state;
@@ -259,45 +259,45 @@ export default class ProductManage extends Component {
         dataIndex: 'price',
         key: 'price',
         width: '230px',
-        render: (text, record) => <><div style={{display: 'inline-block', color: 'green', width: 100 }}>{text}</div> 
-        <Input name="price"
-        style={{width: 60}} onChange={(e) => this.handleChangePrice(e, record.id)}>
-          </Input> <Button style={{color: 'white', borderColor: 'green', background: 'green'}}
-          onClick={() => this.handleSaveItem(record)} icon={<SaveOutlined></SaveOutlined>}>
-            </Button></>
+        render: (text, record) => <><div style={{ display: 'inline-block', color: 'green', width: 100 }}>{text}</div>
+          <Input name="price"
+            style={{ width: 60 }} onChange={(e) => this.handleChangePrice(e, record.id)}>
+          </Input> <Button style={{ color: 'white', borderColor: 'green', background: 'green' }}
+            onClick={() => this.handleSaveItem(record)} icon={<SaveOutlined></SaveOutlined>}>
+          </Button></>
       },
-      {
-        title: 'Màu sắc',
-        key: 'color',
-        dataIndex: 'color',
-        render: color => (
-          <span>
-            {
-              color === 0 ? <Tag color={colors[color]} key={color}>
-                {"White".toUpperCase()}
-              </Tag> :
-                <Tag color={colors[color]} key={color}>
-                  {colors[color].toUpperCase()}
-                </Tag>
-            }
-          </span>
-        ),
-      },
-      {
-        title: 'Size',
-        key: 'size',
-        dataIndex: 'size',
-        render: size => (
-          <span>
-            {
+      // {
+      //   title: 'Màu sắc',
+      //   key: 'color',
+      //   dataIndex: 'color',
+      //   render: color => (
+      //     <span>
+      //       {
+      //         color === 0 ? <Tag color={colors[color]} key={color}>
+      //           {"White".toUpperCase()}
+      //         </Tag> :
+      //           <Tag color={colors[color]} key={color}>
+      //             {colors[color].toUpperCase()}
+      //           </Tag>
+      //       }
+      //     </span>
+      //   ),
+      // },
+      // {
+      //   title: 'Size',
+      //   key: 'size',
+      //   dataIndex: 'size',
+      //   render: size => (
+      //     <span>
+      //       {
 
-              <Tag color="default" key={size}>
-                {sizes[size]}
-              </Tag>
-            }
-          </span>
-        ),
-      },
+      //         <Tag color="default" key={size}>
+      //           {sizes[size]}
+      //         </Tag>
+      //       }
+      //     </span>
+      //   ),
+      // },
       {
         title: 'Sale ( % )',
         dataIndex: 'sale',
@@ -357,7 +357,7 @@ export default class ProductManage extends Component {
                             return <Option key={ele.id} value={ele.id}>{ele.name}</Option>
                           })
                         }
-                        
+
                       </Select>
                     </Col>
                     <Col>
@@ -394,7 +394,7 @@ export default class ProductManage extends Component {
                       onCancel={this.handleCancel.bind(this)} onSubmitForm={this.handleSubmit.bind(this)}></ModalProduct> : ''
                 }
               </>
-                )
+              )
             }
           </div>
         </div>

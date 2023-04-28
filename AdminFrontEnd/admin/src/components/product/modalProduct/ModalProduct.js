@@ -206,31 +206,7 @@ export default class ModalProduct extends Component {
                                         }
                                     </Select>
                                 </Form.Item>
-                                <Form.Item name="size" label="Size" {...config}>
-                                    <Select
-                                    //defaultValue={data.size}
-                                    placeholder="size"
-                                    >
-                                        {
-                                            sizes.map((ele) => {
-                                                return <Option key={ele.id} value={ele.id}>{ele.value}</Option>
-                                            })
-                                        }
-                                    </Select>
-                                </Form.Item>
-                                <Form.Item name="color" label="Color" {...config}>
-                                    <Select
-                                    //defaultValue={data.color}
-                                    placeholder="màu sắc"
-                                    >
-                                        {
-                                            colors.map((ele) => {
-                                                return <Option style={{ color: `${ele.value}` }} key={ele.id} value={ele.id}>{ele.value}</Option>
-                                            })
-                                        }
-                                    </Select>
-                                </Form.Item>
-
+                               
                             </Col>
                         </Row>
 
