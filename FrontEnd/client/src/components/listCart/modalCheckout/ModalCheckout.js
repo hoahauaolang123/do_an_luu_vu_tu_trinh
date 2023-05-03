@@ -110,7 +110,7 @@ class ModalCheckout extends Component {
     render() {
         
         const {user, isMounted} = this.state;
-        console.log(user)
+        
         if(isMounted){
             return (
                 
@@ -152,7 +152,7 @@ class ModalCheckout extends Component {
                             <Form.Item required name="payment" label="Thanh toán" labelAlign="left" {...formItemLayout}>
                                 <Select onChange={this.handleChangePayment.bind(this)}>
                                     <Option value={1}>Thanh toán khi nhận hàng</Option>
-                                    <Option value={2}>Thanh toán online</Option>
+                                    {/* <Option value={2}>Thanh toán online</Option> */}
                                 </Select>
                             </Form.Item>
                             <Form.Item required name="feeShip" label="Vận chuyển" labelAlign="left" {...formItemLayout}>

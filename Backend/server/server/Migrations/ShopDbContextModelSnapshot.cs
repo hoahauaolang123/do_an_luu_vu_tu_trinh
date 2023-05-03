@@ -164,7 +164,7 @@ namespace server.Migrations
                         new
                         {
                             Id = new Guid("078269d8-1a12-4592-b92e-7ff1a876a5f2"),
-                            ConcurrencyStamp = "b034a582-dce5-4d6e-9784-a82788066171",
+                            ConcurrencyStamp = "9a2c5565-e1c9-4a7f-b920-d85541a55f99",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Administrator role",
                             Name = "Admin",
@@ -173,7 +173,7 @@ namespace server.Migrations
                         new
                         {
                             Id = new Guid("6d9186ba-2cd6-4b6c-b729-4e605de1019f"),
-                            ConcurrencyStamp = "cd6bc0b1-1240-4ea8-af49-a7ad78a256ab",
+                            ConcurrencyStamp = "612d89bf-d2c8-44cf-85c0-8a3bd2b4bdf7",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "User role",
                             Name = "User",
@@ -273,13 +273,13 @@ namespace server.Migrations
                         {
                             Id = new Guid("4557893f-1f56-4b6f-bb3b-caefd62c8c49"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e1960103-7aa7-4d6c-b5c0-25581605a93f",
-                            Email = "16110472@student.hcmute.deu.vn",
+                            ConcurrencyStamp = "74073ed5-07df-4402-a0df-11aadf33eae7",
+                            Email = "luuvututrinh58@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "some-admin-email@nonce.fake",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA1Pju3U1m0k5tjLb2dbqVrjRcT0gSx4LGHn0wA1VWSyCUpq8ziW2w/RFJVUoHAB4Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI4OaOzTALmeh0hRZ98SxSfA2zEKoVmFzTwE0RehsDBc0s82+b6K4FzC7As6Xo+E2A==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -366,6 +366,10 @@ namespace server.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("id");
+
+                    b.HasIndex("receiverId");
+
+                    b.HasIndex("senderId");
 
                     b.ToTable("chats");
                 });
@@ -785,6 +789,21 @@ namespace server.Migrations
                     b.HasOne("server.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("server.Models.Chat", b =>
+                {
+                    b.HasOne("server.Models.AppUser", "receiver")
+                        .WithMany()
+                        .HasForeignKey("receiverId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("server.Models.AppUser", "sender")
+                        .WithMany()
+                        .HasForeignKey("senderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

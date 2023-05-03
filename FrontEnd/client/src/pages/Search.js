@@ -18,6 +18,7 @@ import Product from "../components/products/Product";
 import { connect } from "react-redux";
 import { addToCart } from "../action/cartsAction";
 import { fetch_search_product } from "../action/productsAction";
+import SmartText from "../components/common/SmartText";
 
 class Search extends Component {
   constructor(props) {
@@ -160,7 +161,7 @@ class Search extends Component {
                   {categories.length === 0
                     ? ""
                     : categories.map((e) => {
-                      debugger;
+                   
                       return (
                         <li
                           key={e.id}
@@ -176,7 +177,8 @@ class Search extends Component {
                               : "",
                           }}
                         >
-                          {e.name}
+                          <SmartText text= {e.name} maxLength={30}></SmartText>
+                         
                         </li>
                       );
                     })}

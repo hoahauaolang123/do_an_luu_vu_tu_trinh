@@ -25,7 +25,7 @@ class CartItem extends Component {
     render() {
         const {item} = this.props;
         
-        
+       
         return (
             <div className="container-cart-item">
                 <div style={{ padding: '10px'}}>
@@ -34,7 +34,7 @@ class CartItem extends Component {
                 <div className="info-cart-item">
                     <div style={{width: '60%'}}>
                         <Link to={`/product-detail/${item.id}`}><h3>{item.name}</h3></Link>
-                        <p><span>Trạng thái: <Tag color="#87d068">còn hàng</Tag></span> | <span>Danh mục: </span><b>Quần áo</b></p>
+                        <p><span>Trạng thái: {item.status === 0 ?  <Tag color="#87d068">Còn hàng</Tag> : <Tag color="#B22B27">Hết hàng</Tag>} </span> | <span>Danh mục: </span><b>{item?.category?.generalityName}</b></p>
                         <Rate disabled value={item.rating || 5}></Rate>
                         
                     </div>

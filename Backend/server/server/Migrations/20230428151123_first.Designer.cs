@@ -10,8 +10,8 @@ using server.Data;
 namespace server.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    [Migration("20230403154509_init2")]
-    partial class init2
+    [Migration("20230428151123_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -166,7 +166,7 @@ namespace server.Migrations
                         new
                         {
                             Id = new Guid("078269d8-1a12-4592-b92e-7ff1a876a5f2"),
-                            ConcurrencyStamp = "943356e1-3acd-4cd3-8bb0-9db6e3342d15",
+                            ConcurrencyStamp = "9a2c5565-e1c9-4a7f-b920-d85541a55f99",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Administrator role",
                             Name = "Admin",
@@ -175,7 +175,7 @@ namespace server.Migrations
                         new
                         {
                             Id = new Guid("6d9186ba-2cd6-4b6c-b729-4e605de1019f"),
-                            ConcurrencyStamp = "d8eea28a-90f7-425f-9745-2ed952a3c4a7",
+                            ConcurrencyStamp = "612d89bf-d2c8-44cf-85c0-8a3bd2b4bdf7",
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "User role",
                             Name = "User",
@@ -275,13 +275,13 @@ namespace server.Migrations
                         {
                             Id = new Guid("4557893f-1f56-4b6f-bb3b-caefd62c8c49"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f9535bc4-932c-4d4c-8e50-d7a9cb3468f3",
-                            Email = "16110472@student.hcmute.deu.vn",
+                            ConcurrencyStamp = "74073ed5-07df-4402-a0df-11aadf33eae7",
+                            Email = "luuvututrinh58@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "some-admin-email@nonce.fake",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAENxOAUED25p7X3sUHCmr66PtTEHVkLdizpMfpBDtmbOpHENeBYyneF5xPWETjyKP0w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI4OaOzTALmeh0hRZ98SxSfA2zEKoVmFzTwE0RehsDBc0s82+b6K4FzC7As6Xo+E2A==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -800,13 +800,13 @@ namespace server.Migrations
                     b.HasOne("server.Models.AppUser", "receiver")
                         .WithMany()
                         .HasForeignKey("receiverId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("server.Models.AppUser", "sender")
                         .WithMany()
                         .HasForeignKey("senderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace server.Migrations
 {
-    public partial class init : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -210,7 +210,6 @@ namespace server.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                        
                     table.ForeignKey(
                         name: "FK_chats_AspNetUsers_senderId",
                         column: x => x.senderId,
@@ -402,14 +401,14 @@ namespace server.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreationDate", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("078269d8-1a12-4592-b92e-7ff1a876a5f2"), "d975c297-5a9d-4a9a-b534-ee7348f6b9b0", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrator role", "Admin", "Admin" },
-                    { new Guid("6d9186ba-2cd6-4b6c-b729-4e605de1019f"), "03f18773-0be5-46fb-bf09-f428b5b18d72", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User role", "User", "User" }
+                    { new Guid("078269d8-1a12-4592-b92e-7ff1a876a5f2"), "9a2c5565-e1c9-4a7f-b920-d85541a55f99", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Administrator role", "Admin", "Admin" },
+                    { new Guid("6d9186ba-2cd6-4b6c-b729-4e605de1019f"), "612d89bf-d2c8-44cf-85c0-8a3bd2b4bdf7", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User role", "User", "User" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "address", "avatar", "birthDay", "displayname", "gender", "phone", "status" },
-                values: new object[] { new Guid("4557893f-1f56-4b6f-bb3b-caefd62c8c49"), 0, "bd06ee64-0058-4ded-8513-92aa7e3e3f36", "16110472@student.hcmute.deu.vn", true, false, null, "some-admin-email@nonce.fake", "admin", "AQAAAAEAACcQAAAAEEe/HNxVMMxLb0iJ0fG/2no2/2EAO+F3L2x0jBX5uXCKyv0Pj9h+SjmOOFFu9sk/pQ==", null, false, "", false, "admin", null, null, new DateTime(1998, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", false, null, 1 });
+                values: new object[] { new Guid("4557893f-1f56-4b6f-bb3b-caefd62c8c49"), 0, "74073ed5-07df-4402-a0df-11aadf33eae7", "luuvututrinh58@gmail.com", true, false, null, "some-admin-email@nonce.fake", "admin", "AQAAAAEAACcQAAAAEI4OaOzTALmeh0hRZ98SxSfA2zEKoVmFzTwE0RehsDBc0s82+b6K4FzC7As6Xo+E2A==", null, false, "", false, "admin", null, null, new DateTime(1998, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", false, null, 1 });
 
             migrationBuilder.InsertData(
                 table: "categories",

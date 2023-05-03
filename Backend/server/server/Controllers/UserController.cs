@@ -50,6 +50,8 @@ namespace server.Controllers
             }
             return Ok("Đăng ký tài khoản thành công!");
         }
+
+
         [HttpGet("get-user-by-id/{userId}")]
         public async Task<IActionResult> getUserById(Guid userId)
         {
@@ -93,7 +95,20 @@ namespace server.Controllers
             HttpContext.Response.Headers.Add("Token", $"{token}");
             return Ok(token);
         }
-        
+
+
+        [HttpGet("GetRoles")]
+        public async Task<IActionResult> GetRoles()
+        {
+            var data = await _userService.GetRoles();
+            if (data == null)
+            {
+                return BadRequest();
+            }
+            
+            return Ok(data);
+        }
+
 
     }
 }

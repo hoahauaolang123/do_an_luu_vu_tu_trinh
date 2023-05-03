@@ -251,6 +251,7 @@ export default class ProductManage extends Component {
       {
         title: 'Giá nhập ( vnđ )',
         dataIndex: 'importPrice',
+        width:'150px',
         key: 'importPrice',
         render: text => <span >{text}</span>
       },
@@ -302,6 +303,7 @@ export default class ProductManage extends Component {
         title: 'Sale ( % )',
         dataIndex: 'sale',
         key: 'sale',
+        width:'100px',  
         render: text => <span style={{ color: 'red' }}>{text}</span>
       },
       {

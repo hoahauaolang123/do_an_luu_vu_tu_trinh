@@ -132,7 +132,7 @@ class Maximized extends Component {
     }
   }
   setNewValue(message) {
-    debugger;
+
     const newList = [...this.state.list, message];
     this.setState({
       list: newList,

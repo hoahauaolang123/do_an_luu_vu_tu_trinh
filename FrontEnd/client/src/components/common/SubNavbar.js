@@ -10,6 +10,7 @@ import {
 import axiosInstance from "../../utils/axiosInstance";
 import queryString from "query-string";
 import { connect } from "react-redux";
+import SmartText from "./SmartText";
 
 const { SubMenu } = Menu;
 
@@ -29,7 +30,7 @@ class SubNavbar extends Component {
     });
   }
   handleClickCategory(item) {
-    debugger;
+    
     this.props.history.push({
       pathname: "/search/",
       search: queryString.stringify({
@@ -56,7 +57,8 @@ class SubNavbar extends Component {
               key={ele.id}
               onClick={this.handleClickCategory.bind(this)}
             >
-              {ele.name}
+              <SmartText text={ele.name} maxLength={30}></SmartText>
+              
             </Menu.Item>
           );
         })}

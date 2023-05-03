@@ -1,5 +1,6 @@
 ﻿using server.Helper.facebook;
 using server.Helper.user;
+using server.Models;
 using server.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,6 @@ namespace server.Interfaces
         Task<bool> ForgotPassword(ForgotPasswordRequest request);
         Task<bool> ResetPassword(ResetPasswordRequest request);
         Task<string> LoginWithFacebook(FacebookLoginRequest request);
+        Task<List<AppRole>> GetRoles();
     }
 }

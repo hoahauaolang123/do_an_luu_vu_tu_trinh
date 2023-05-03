@@ -5,6 +5,8 @@ import * as ParsePrice from '../../helper/parsePriceForSale';
 import ModalCheckout from '../listCart/modalCheckout/ModalCheckout';
 import axios from 'axios';
 import {handle_checkout_cart} from '../../action/cartsAction';
+import ModelCheckoutV2 from './modalCheckout/ModelCheckoutV2';
+import { Modal } from 'antd';
 
 
 class TotalCart extends Component {
@@ -12,8 +14,8 @@ class TotalCart extends Component {
         super(props);
         this.state = {
             visibleModal: false,
-            
-            
+            dataForm:{},
+            visibleModalConfirm : false
         }
     }
     componentDidMount(){
@@ -22,6 +24,7 @@ class TotalCart extends Component {
         )
     }
     handleCheckout(){
+        debugger;
         this.setState({
             visibleModal: true,
         })
@@ -34,10 +37,56 @@ class TotalCart extends Component {
     handleCreateOrder = (order) => {
         this.props.create_order(order);
     }
+    handleShowConfirm=(dataForm)=>{
+        debugger;
+        this.setState({
+            dataForm: dataForm,
+            visibleModalConfirm: true,
+            
+        })
+
+    }
+
+     handleSubmitCheckout = (values) => {
+
+        //this.props.onCreateOrder();
+        const carts = JSON.parse(localStorage.getItem('carts'));
+        //format orderdetail
+        const orderDetail = carts.map((ele) => {
+            return { quantity: ele.quantity, unitPrice: ele.price, sale: ele.sale, productId: ele.id }
+        })
+        //console.log(values.note.split('\n'));
+        if (this.props.userId) {
+            this.handleCreateOrder({
+                userId: this.props.userId,
+                phone: values.phone,
+                email: values.email,
+                total: this.props.props.total + values.feeShip,
+                feeShip: values.feeShip,
+                address: values.address,
+                street: values.street,
+                note: values.note.split('\n').join(';'),
+                OrderDetails: orderDetail
+            })
+        }
+        else {
+            this.handleCreateOrder({
+                guess: values.displayname,
+                phone: values.phone,
+                email: values.email,
+                total: this.props.props.total + values.feeShip,
+                feeShip: values.feeShip,
+                address: values.address,
+                street: values.street,
+                note: values.note.split('\n').join(';'),
+                OrderDetails: orderDetail
+            })
+        }
+
+        //this.props.onCreateOrder({})
+    }
     render() {
-        
-        
-        
+
         return (
             <>
                 <div className="container-total-cart">
@@ -63,14 +112,39 @@ class TotalCart extends Component {
                         </button>
                     </div>
                     {
-                        this.state.visibleModal ? <ModalCheckout 
+                       
+                        this.state.visibleModal ? <ModelCheckoutV2 
                         
                         onCreateOrder={this.handleCreateOrder.bind(this)}
                         total={this.props.total} userId={this.props.userId}
                         onCancel={this.handleCancelModalCheckout.bind(this)} 
-                        visible={this.state.visibleModal}>
+                        visible={this.state.visibleModal}
+                        handleShowConfirm = {this.handleShowConfirm.bind(this)}
+                        >
 
-                        </ModalCheckout>:""
+                        </ModelCheckoutV2>:""
+                    }
+
+                    {
+                        this.state.visibleModalConfirm ? <Modal visible={this.state.showModalConfirm}
+                        onOk={this.handleSubmitCheckout.bind(this)}
+                        confirmLoading={this.props.isLoading}
+                        onCancel={() => {this.setState({
+                            showModalConfirm:false
+
+                        }) }}>
+                        <div>
+                            <div>
+                                <span>Kiểm tra thông tin đặt hàng</span>
+                            </div>
+                            <div>
+                                <span>Họ và tên : {this.state.dataForm.displayname}</span>
+                                <span>Email :  {this.state.dataForm.email}</span>
+                                <span>Số điện thoại : {this.state.dataForm.phone}</span>
+                                <span>Địa chỉ : {this.state.dataForm.address}</span>
+                            </div>
+                        </div>
+                    </Modal>:""
                     }
                 </div>
             </>

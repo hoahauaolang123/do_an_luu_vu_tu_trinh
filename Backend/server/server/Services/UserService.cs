@@ -302,5 +302,12 @@ namespace server.Services
             output = output.Replace('/', '_'); // 63rd char of encoding
             return output;
         }
+
+        public async  Task<List<AppRole>> GetRoles()
+        {
+            var roles = new List<AppRole>();
+            roles = await _context.Roles.ToListAsync();
+            return roles;
+        }
     }
 }

@@ -41,8 +41,8 @@ namespace server.Services
             {
                 name = request.name,
                 description = request.description,
-                color = request.color,
-                size = request.size,
+                //color = request.color,
+                //size = request.size,
                 sale = request.sale,
                 status = enums.ActionStatus.Display,
                 rating = 5,
@@ -128,8 +128,8 @@ namespace server.Services
             {
                 id = request.id,
                 name = request.name,
-                color = request.color,
-                size = request.size,
+                //color = request.color,
+                //size = request.size,
                 description = request.description,
                 price = request.price,
                 importPrice = request.importPrice,

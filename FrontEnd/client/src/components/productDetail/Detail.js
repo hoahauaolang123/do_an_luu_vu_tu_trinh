@@ -164,9 +164,9 @@ class Detail extends Component {
                 </div>
             </article>
                 <Descriptions title="Thông tin sản phẩm" layout="vertical" bordered>
-                    <Descriptions.Item className="bold-text" label="Sản phẩm">{product.name}</Descriptions.Item>
+                    {/* <Descriptions.Item className="bold-text" label="Sản phẩm">{product.name}</Descriptions.Item>
                     <Descriptions.Item className="bold-text" label="Nhà sản xuất">{product.provider.name}</Descriptions.Item>
-                    <Descriptions.Item className="bold-text" label="Danh mục">{product.category.generalityName}</Descriptions.Item>
+                    <Descriptions.Item className="bold-text" label="Danh mục">{product.category.generalityName}</Descriptions.Item> */}
 
                     <Descriptions.Item className="bold-text" label="Mô tả" span={2}>
                         <ul style={{ marginLeft: '10px' }}>
@@ -177,7 +177,7 @@ class Detail extends Component {
                             }
                         </ul>
                     </Descriptions.Item>
-                    <Descriptions.Item className="bold-text" label="Trạng thái"><Badge status="processing" text="Còn hàng" /></Descriptions.Item>
+                    {/* <Descriptions.Item className="bold-text" label="Trạng thái"><Badge status="processing" text="Còn hàng" /></Descriptions.Item> */}
                 </Descriptions>
                 <br></br>
             </>

@@ -63,13 +63,13 @@ namespace server.Controllers
             if (result.success)
             {
                 var listData = await _manageOrderService.GetOrderDetailByOrderId(request.orderId);
-                var message = new Message(new String[] { result.email }, "ONLINE SHOP - Hóa Đơn Khách Hàng - " + result.customer, string.Empty);
-                var flag = await _emailSender.SendMailOrderBill(message, listData, result.total);
-                if(flag == false)
-                {
-                    await _manageOrderService.SetStatusNotConfirm(request.orderId, 0);
-                }
-                return Ok(flag);
+                //var message = new Message(new String[] { result.email }, "VStyle - Hóa Đơn Khách Hàng - " + result.customer, string.Empty);
+                //var flag = await _emailSender.SendMailOrderBill(message, listData, result.total);
+                //if (flag == false)
+                //{
+                //    await _manageOrderService.SetStatusNotConfirm(request.orderId, 0);
+                //}
+                //return Ok(flag);
             }
             return Ok(result.success);
         }
@@ -81,16 +81,16 @@ namespace server.Controllers
             {
                 var order = await _manageOrderService.GetOrderByOrderId(request.orderId);
                 var customer = String.IsNullOrEmpty(order.guess) ? order.user.displayname : order.guess;
-                var note = String.IsNullOrEmpty(request.note) ? $"Đơn hàng có mã {request.orderId} của bạn đã bị hủy bởi Admin!" :
-                    $"Đơn hàng có mã {request.orderId} của bạn đã bị hủy bởi Admin. Do " + request.note;
-                var message = new Message(new string[] { order.email }, "ONLINE SHOP - Thông Báo Khách Hàng - "
-                    +customer, note);
-                var flag = await _emailSender.SendMailOrderBill(message, null, 0);
-                if (flag == false)
-                {
-                    await _manageOrderService.SetStatusNotConfirm(request.orderId, request.statusRollBack);
-                }
-                return Ok(flag);
+                //var note = String.IsNullOrEmpty(request.note) ? $"Đơn hàng có mã {request.orderId} của bạn đã bị hủy bởi Admin!" :
+                //    $"Đơn hàng có mã {request.orderId} của bạn đã bị hủy bởi Admin. Do " + request.note;
+                //var message = new Message(new string[] { order.email }, "ONLINE SHOP - Thông Báo Khách Hàng - "
+                //    +customer, note);
+                //var flag = await _emailSender.SendMailOrderBill(message, null, 0);
+                //if (flag == false)
+                //{
+                //    await _manageOrderService.SetStatusNotConfirm(request.orderId, request.statusRollBack);
+                //}
+                //return Ok(flag);
             }
             return Ok(result);
         }

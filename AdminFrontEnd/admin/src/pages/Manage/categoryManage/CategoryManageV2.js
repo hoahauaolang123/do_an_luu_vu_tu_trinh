@@ -91,20 +91,21 @@ function CategoryManageV2(props) {
                 }
                 ).catch(err => {
                     message.warning("Thêm danh mục thất bại!", 2)
-                    setDataCategoryManage({ isLoading: false, visible: false, });
+                    setDataCategoryManage({  ...dataCategoryManage,isLoading: false, visible: false, });
                 })
 
         }
         else {
-            setDataCategoryManage({ isLoading: true });
+            setDataCategoryManage({ ...dataCategoryManage, isLoading: true });
             axiosInstance('ManageCategory', 'POST', value)
                 .then(res => {
                     //console.log(res.data);
-                    message.success("Thêm danh mục thành công!", 2)
+                    message.success("Thêm danh mục thành công!", 2);
+                    const { data } = dataCategoryManage;
                     setDataCategoryManage(prevState => {
                         return {
                             ...prevState,
-                            data: [...prevState.data, res.data],
+                            data: [...data, res.data],
                             isLoading: false,
                             visible: false
                         }
@@ -117,7 +118,7 @@ function CategoryManageV2(props) {
     function confirmDelete(record) {
         const { data } = dataCategoryManage;
         let tempData = [...data].filter(ele => ele.id !== record.id);
-        setDataCategoryManage({ isLoading: true });
+        setDataCategoryManage({ ...dataCategoryManage, isLoading: true });
 
         axiosInstance(`ManageCategory/${record.id}`, 'DELETE')
             .then(res => {
@@ -130,12 +131,13 @@ function CategoryManageV2(props) {
             })
             .catch(err => {
                 message.warning("Xóa danh mục thất bại!", 2)
-                setDataCategoryManage({ isLoading: false });
+                setDataCategoryManage({  ...dataCategoryManage,isLoading: false });
             })
     }
 
     function handleSearch(value) {
         setDataCategoryManage({
+            ...dataCategoryManage,
             isLoading: true,
         })
         if (value.trim() === '') {
@@ -157,6 +159,7 @@ function CategoryManageV2(props) {
                     console.log(res.data);
 
                     setDataCategoryManage({
+                        ...dataCategoryManage,
                         data: [...res.data],
                         isLoading: false
                     })
@@ -167,6 +170,7 @@ function CategoryManageV2(props) {
         }
 
     }
+    console.log(dataCategoryManage);
 
     const columns = [
         {

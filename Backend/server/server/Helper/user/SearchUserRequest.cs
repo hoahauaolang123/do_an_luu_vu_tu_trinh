@@ -10,5 +10,7 @@ namespace server.Helper.user
     {
         public string keyWord { get; set; }
         public ActionStatus? status { get; set; }
+
+        public string currentUserId { get; set; }
     }
 }

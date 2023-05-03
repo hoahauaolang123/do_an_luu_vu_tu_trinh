@@ -15,6 +15,7 @@ import StatisticsGeneral from "../pages/Manage/statistical/StatisticsGeneral";
 import OrderCanceled from "../pages/Manage/orderManage/OrderCanceled";
 import MainScreen from "../pages/Manage/orderManage/MainScreen";
 import CategoryManageV2 from "../pages/Manage/categoryManage/CategoryManageV2";
+import UserManagerV2 from "../pages/Manage/userManage/UserManagerV2";
 
 //
 
@@ -77,7 +78,7 @@ const AdminRoute = [
       path: "/admin/user-manage",
       exact: true,
       myComponent: (location, props) => (
-         <UserManage location={location} {...props} />
+         <UserManagerV2 location={location} {...props} />
       ),
    },
    {
