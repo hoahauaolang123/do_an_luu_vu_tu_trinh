@@ -36,7 +36,7 @@ export default class Banner extends Component {
                     cursor: 'pointer', fontSize: '2em', color: 'white', position: 'absolute', top: '46%',
                     left: '2%', zIndex: '1'
                 }} onClick={this.previous}></MdKeyboardArrowLeft>
-                <Carousel ref={node => (this.carousel = node)} {...props}>
+                <Carousel ref={node => (this.carousel = node)} {...props} style={{ marginTop: '100px' }}>
 
                     <div style={{}}>
                         <img src={banner1} width="98%" alt="Banner 1"></img>

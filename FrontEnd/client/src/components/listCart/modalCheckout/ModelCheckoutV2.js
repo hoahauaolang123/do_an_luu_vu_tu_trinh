@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Component, Fragment, useState } from 'react';
 import { Modal, Row, Col, Form, Input, Select, Button, Spin, Timeline } from 'antd';
 import { ShoppingOutlined, CarOutlined, DollarCircleOutlined } from '@ant-design/icons';
@@ -38,9 +39,7 @@ function ModelCheckoutV2(props) {
     }
 
 
-    const handleStripePayment = (token) => {
-        console.log(token);
-    }
+
 
 
     function handleChangePayment(value) {
@@ -60,7 +59,9 @@ function ModelCheckoutV2(props) {
         setStateCheckout({ ...stateCheckout, feeShip: value })
 
     }
-    useEffect(async () => {
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => {
         if (props.userId === '') {
             setStateCheckout({
                 ...stateCheckout, user: {},
@@ -68,24 +69,30 @@ function ModelCheckoutV2(props) {
             })
         }
         else {
-            const data = await axiosInstance(`User/get-user-by-id/${props.userId}`).then(res => res.data);
+            const data = axiosInstance(`User/get-user-by-id/${props.userId}`).then(res => res.data);
 
             setStateCheckout({
                 ...stateCheckout, user: { ...data },
                 isMounted: true,
             })
         }
-    },[]);
+    }, []);
 
-  
-    return stateCheckout.isMounted ? (<><Modal visible={props.visible} footer={false} title="THỦ TỤC THANH TOÁN"
+
+    return stateCheckout.isMounted ? (<><Modal open={props.visible} footer={false} title="THỦ TỤC THANH TOÁN"
         onCancel={handleCancel} width={800}
     >
         <Spin spinning={props.isLoading} size="large">
             <Form onFinish={() => {
                 var dataForm = form.getFieldsValue();
-              debugger;
-                props.handleShowConfirm(dataForm);
+                var flag = dataForm;
+                delete flag.note;
+                var check = Object.values(flag).every(x => x === undefined);
+
+                if (!check) {
+                    props.handleShowConfirm(dataForm);
+                }
+
             }}
                 form={form}
                 initialValues={{
@@ -110,9 +117,7 @@ function ModelCheckoutV2(props) {
                         <Form.Item required name="address" label="Địa chỉ" {...formItemLayout} labelAlign="left">
                             <Input type="text" placeholder="Địa chỉ"></Input>
                         </Form.Item>
-                        <Form.Item required name="street" label="Đường" {...formItemLayout} labelAlign="left">
-                            <Input type="text" placeholder="Đường"></Input>
-                        </Form.Item>
+
                         <Form.Item name="note" label="Ghi chú" {...formItemLayout} labelAlign="left">
                             <TextArea placeholder="Ghi chú"></TextArea>
                         </Form.Item>
@@ -197,7 +202,7 @@ function ModelCheckoutV2(props) {
             </Form>
         </Spin>
     </Modal>
-        </>) : <></>
+    </>) : <></>
 }
 const f_size_25 = {
     fontSize: 22,

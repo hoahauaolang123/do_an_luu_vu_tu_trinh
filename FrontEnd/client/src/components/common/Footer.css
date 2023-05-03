@@ -1,8 +1,9 @@
-.article-footer{
+.article-footer {
     margin-top: 20px;
 }
-.article-footer h4{
-    color: rgb(51, 51, 51);
+
+.article-footer h4 {
+    color: #ffffff;
     font-size: 15px;
     font-weight: 500;
     font-stretch: normal;
@@ -10,10 +11,12 @@
     margin: 0px 0px 17px;
     text-align: center;
 }
-.article-footer h6{
+
+.article-footer h6 {
     color: rgb(175, 154, 125);
 }
-.article-footer .img-icon{
+
+.article-footer .img-icon {
     padding: 2px;
     width: 63px;
     height: 35px;

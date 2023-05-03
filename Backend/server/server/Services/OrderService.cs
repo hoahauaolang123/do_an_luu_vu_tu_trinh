@@ -24,7 +24,7 @@ namespace server.Services
             var order = new Order()
             {
                 address = request.address,
-                street = request.street,
+             
                 createDate = DateTime.Now,
                 guess = request.guess,
                 phone = request.phone,

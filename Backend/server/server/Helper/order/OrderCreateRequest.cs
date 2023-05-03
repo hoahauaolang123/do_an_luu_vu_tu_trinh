@@ -10,9 +10,9 @@ namespace server.Helper.order
     {
         
         public int total { get; set; }
-        public string note { get; set; }
+        public string note { get; set; } = "";
         public string address { get; set; }
-        public string street { get; set; }
+        
         public int feeShip { get; set; }
         //guess
         public string guess { get; set; }

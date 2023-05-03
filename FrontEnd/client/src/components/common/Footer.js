@@ -13,11 +13,11 @@ import img6 from '../../images/footer/img6.PNG';
 
 export default function Footer() {
     return (
-        <footer style={{ width: '100%', background: '#ffffff' }}>
+        <footer style={{ width: '100%', background: '#000000' }}>
             <div style={{ width: '75%', margin: '0 auto' }}>
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                     <Col span={6}>
-                        <article className="article-footer">
+                        <article className="article-footer" style={{ color: '#ffffff' }}>
                             <h4>HỖ TRỢ KHÁCH HÀNG</h4>
                             <h6>Được đổi, trả trước khi nhận hàng nếu sản phẩm bị lỗi thuộc về VStyle</h6>
                             <h6>Chăm sóc khách hàng: +843 445 6300</h6>
@@ -61,7 +61,8 @@ export default function Footer() {
 
                                         <Avatar shape="square" size={48} style={{
                                             color: '#f5222d',
-                                            background: 'white'
+                                            background: 'white',
+                                            marginLeft: "12px"
                                         }} icon={<YoutubeOutlined />} />
 
                                     </Col>
